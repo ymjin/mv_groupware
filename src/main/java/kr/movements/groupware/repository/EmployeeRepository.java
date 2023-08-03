@@ -9,4 +9,5 @@ import java.util.Optional;
 public interface EmployeeRepository extends JpaRepository<Employee, Long> {
     List<Employee> findAllByName(String name);
     Optional<Employee> findByName(String name);
+    List<Employee> findByStatusCodeNot(Integer code);
 }

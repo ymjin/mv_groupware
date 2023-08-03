@@ -86,18 +86,11 @@ public class EmployeeService {
     }
 
     public List<EmployeeDto> findAll() {
-        List<Employee> list = employeeRepository.findAll();
+        List<Employee> list = employeeRepository.findByStatusCodeNot(99);//employeeRepository.findById.findAll();
         List<EmployeeDto> datas = new ArrayList<>();
 
         for (Employee employee:list) {
             EmployeeDto data = new EmployeeDto();
-            data.setId(employee.getId());
-            data.setGradeName(employee.getGrade().getKorName());
-            data.setName(employee.getName());
-            data.setEmail(employee.getEmail());
-            data.setPhone(employee.getPhone());
-            data.setStatus(employee.getStatus().getCode());
-            data.setStatusKorName(employee.getStatus().getKorName());
 
             Optional<ProveImage> img = proveImageRepository.findByEmployeeId(employee.getId());
             if ( img.stream().count() > 0) {
@@ -110,6 +103,15 @@ public class EmployeeService {
                     throw new RuntimeException(e);
                 }
             }
+
+            data.setName(employee.getName());
+            data.setGradeName(employee.getGrade().getKorName());
+            data.setEmail(employee.getEmail());
+            data.setPhone(employee.getPhone());
+
+            data.setId(employee.getId());
+            data.setStatus(employee.getStatus().getCode());
+            data.setStatusKorName(employee.getStatus().getKorName());
 
             datas.add(data);
         }

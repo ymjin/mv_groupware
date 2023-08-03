@@ -62,20 +62,9 @@ public class UploadController {
 
     @PostMapping("/excel/employee")
     public String readEmployee(@RequestParam("file") MultipartFile file, Model model) throws IOException {
-//        String extension = FilenameUtils.getExtension(file.getOriginalFilename());
-
-//        if (!extension.equals("xlsx") && !extension.equals("xls")) {
-//            throw new IOException(("엑셀파일만 업로드 해주세요"));
-//        }
-
         Workbook workbook = null;
-//        if (extension.equals("xlsx")) {
-            workbook = new XSSFWorkbook(file.getInputStream());
-//        } else if (extension.equals("xls")) {
-//            workbook = new HSSFWorkbook(file.getInputStream());
-//        }
+        workbook = new XSSFWorkbook(file.getInputStream());
 
-        //employeeService.parsing(workbook.getSheetAt(workbook.getSheetIndex("employee")));
         employeeService.parsing(workbook.getSheetAt(0));
         model.addAttribute("result", "true");
         return "redirect:/";
@@ -83,20 +72,9 @@ public class UploadController {
 
     @PostMapping("/excel/location")
     public String readLocation(@RequestParam("file") MultipartFile file, Model model) throws IOException {
-//        String extension = FilenameUtils.getExtension(file.getOriginalFilename());
-
-//        if (!extension.equals("xlsx") && !extension.equals("xls")) {
-//            throw new IOException(("엑셀파일만 업로드 해주세요"));
-//        }
-
         Workbook workbook = null;
-//        if (extension.equals("xlsx")) {
         workbook = new XSSFWorkbook(file.getInputStream());
-//        } else if (extension.equals("xls")) {
-//            workbook = new HSSFWorkbook(file.getInputStream());
-//        }
 
-        //employeeService.parsing(workbook.getSheetAt(workbook.getSheetIndex("employee")));
         locationService.parsing(workbook.getSheetAt(0));
 
         model.addAttribute("result", "true");
@@ -105,18 +83,8 @@ public class UploadController {
 
     @PostMapping("/excel/client")
     public String readClient(@RequestParam("file") MultipartFile file, Model model) throws IOException {
-//        String extension = FilenameUtils.getExtension(file.getOriginalFilename());
-
-//        if (!extension.equals("xlsx") && !extension.equals("xls")) {
-//            throw new IOException(("엑셀파일만 업로드 해주세요"));
-//        }
-
         Workbook workbook = null;
-//        if (extension.equals("xlsx")) {
         workbook = new XSSFWorkbook(file.getInputStream());
-//        } else if (extension.equals("xls")) {
-//            workbook = new HSSFWorkbook(file.getInputStream());
-//        }
 
         clientService.parsing(workbook.getSheetAt(0));
         model.addAttribute("result", "true");
