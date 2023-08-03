@@ -1,0 +1,40 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Employee List</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+</head>
+
+<body>
+<button type="button" class="navyBtn" onClick="location.href='/'" th:text="HOME"/>
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th scope="col">순번</th>
+        <th scope="col">사진</th>
+        <th scope="col">이름</th>
+        <th scope="col">이메일</th>
+        <th scope="col">전화번호</th>
+        <th scope="col">재직여부</th>
+        <th scope="col">직책</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="data : ${datas}" >
+        <td th:text="${data.id}"></td>
+        <td>
+            <img th:src="|data:image/jpeg;base64,${data.img}|" style="max-width:100px; min-height:50px;"/>
+        </td>
+        <td th:text="${data.name}"></td>
+        <td th:text="${data.gradeName}"></td>
+        <td th:text="${data.email}"></td>
+        <td th:text="${data.phone}"></td>
+        <td th:text="${data.statusKorName}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

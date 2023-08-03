@@ -1,0 +1,25 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Organization List</title>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+</head>
+<body>
+<button type="button" class="navyBtn" onClick="location.href='/'" th:text="HOME"/>
+
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th scope="col">조직명</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="data : ${datas}" >
+    <td th:text="${data.korName}" th:onclick="|location.href='@{/organization}'|"></td>
+  </tr>
+  </tbody>
+</table>
+</body>
+</html>

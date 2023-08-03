@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset=""UTF-8>
+    <title>이미지 업로드</title>
+</head>
+
+<script>
+function nameCheck(name){
+    if(confirm("삭제하시겠습니까?")){
+        alert("aldkjflaksdjf");
+        // location.href='/deleteOrder?oid=' + oid;
+    }
+}
+</script>
+<body>
+<button type="button" class="navyBtn" onClick="location.href='/'" th:text="HOME"/>
+
+<div class="container">
+<!--    <form th:action="@{image/read}" method="post" enctype="multipart/form-data">-->
+<!--        <input type="file" th:name="file">-->
+<!--        <input th:type="submit" th:value="제출" />-->
+<!--    </form>-->
+<!--    th:object="${ProveImageData}" -->
+<!--    <form action="@{image/name}" method="post" enctype=""></form>-->
+    <form th:action="@{image/upload}" method="post" enctype="multipart/form-data">
+        <div>
+<!--            <label th:for="name">이름 : </label>-->
+            <input type="text" th:name="name" placeholder="이름">
+<!--            <button id="ajaxCall" th:onclick="|location.href='@{check(id=${name})}'|">확인</button>-->
+<!--            <label th:for="result"></label>-->
+        </div>
+        <div>
+            <input type="file" th:name="file" accept="image/*">
+        </div>
+        <div>
+            <input th:type="submit" th:value="등록" />
+        </div>
+    </form>
+</div>
+<!--${datas}-->
+</body>
+</html>

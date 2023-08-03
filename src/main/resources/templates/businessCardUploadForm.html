@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset=""UTF-8>
+    <title>이미지 업로드</title>
+</head>
+
+<body>
+<button type="button" class="navyBtn" onClick="location.href='/'" th:text="HOME"/>
+
+<div class="container">
+    <form th:action="@{client/business}" method="post" enctype="multipart/form-data">
+        <div>
+            <input type="text" th:name="name" placeholder="고객 이름">
+        </div>
+        <div>
+            <input type="file" th:name="front" accept="image/*">
+        </div>
+        <div>
+            <input type="file" th:name="rear" accept="image/*">
+        </div>
+        <div>
+            <input th:type="submit" th:value="등록" />
+        </div>
+    </form>
+</div>
+<!--${datas}-->
+</body>
+</html>

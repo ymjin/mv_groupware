@@ -1,0 +1,44 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Client List</title>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+</head>
+<body>
+<!--<p th:text="${datas}"></p>-->
+<button type="button" class="navyBtn" onClick="location.href='/'" th:text="HOME"/>
+
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th scope="col">명함전면</th>
+    <th scope="col">명함후면</th>
+    <th scope="col">회사</th>
+    <th scope="col">부서</th>
+    <th scope="col">이름</th>
+    <th scope="col">직급</th>
+    <th scope="col">전화번호</th>
+    <th scope="col">이메일</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="data : ${datas}" >
+    <td>
+      <img th:src="|data:image/jpeg;base64,${data.front}|" style="max-width:100px; min-height:50px;"/>
+    </td>
+    <td>
+      <img th:src="|data:image/jpeg;base64,${data.rear}|" style="max-width:100px; min-height:50px;"/>
+    </td>
+    <td th:text="${data.company_name}"></td>
+    <td th:text="${data.team_name}"></td>
+    <td th:text="${data.name}"></td>
+    <td th:text="${data.grade_name}"></td>
+    <td th:text="${data.mobile}"></td>
+    <td th:text="${data.email}"></td>
+  </tr>
+  </tbody>
+</table>
+</body>
+</html>
